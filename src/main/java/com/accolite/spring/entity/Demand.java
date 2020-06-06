@@ -28,11 +28,7 @@ public class Demand {
     private long empid;
 	public long getDemandid() {
 		return demandid;
-	}
-	public void setDemandid(long demandid) {
-		this.demandid = demandid;
-	}
-	public String getSkills() {
+	}	public String getSkills() {
 		return skills;
 	}
 	public void setSkills(String skills) {

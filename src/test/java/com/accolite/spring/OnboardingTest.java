@@ -1,5 +1,6 @@
 package com.accolite.spring;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,6 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.accolite.spring.entity.Employee;
 import com.accolite.spring.entity.Onboarding;
 import com.accolite.spring.repository.OnboardingRepository;
 import com.accolite.spring.service.OnboardingService;
@@ -68,7 +71,18 @@ public  class OnboardingTest {
 	    verify(onboardingRepository,times(1)).deleteById(1);
 	}
 	
-	
+	@Test
+	public void update() {
+
+		 Onboarding onboarding = new Onboarding(1,2,"sasi","sasikiran","ssn",4,45678,"nellore","nellore","mumbai","2020-06-06","2020-06-06","mjbb","kjbkj","klhkjh" );
+		
+		
+		when(onboardingRepository.findById(1)).thenReturn(Optional.of(onboarding));
+		onboarding.setCollege("Narayana");
+
+		when(onboardingRepository.save(onboarding)).thenReturn(onboarding);
+		assertThat(onboardingService.update(1, onboarding)).isEqualTo(onboarding);
+	}	
 	
 	
 }

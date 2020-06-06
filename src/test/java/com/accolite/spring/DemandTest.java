@@ -1,5 +1,6 @@
 package com.accolite.spring;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -17,6 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.accolite.spring.entity.Demand;
+import com.accolite.spring.entity.Onboarding;
 import com.accolite.spring.repository.DemandRepository;
 import com.accolite.spring.service.DemandService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,6 +69,17 @@ public  class DemandTest {
 	    verify(demandRepository,times(1)).deleteById((long) 1);
 	}
 	
+	@Test
+	public void update() {
+		
+		 Demand demand = new Demand(1, "JAVA","2020-0606", "Not Satisfied", "MUMBAI", "6",1);;
+	   
+		when(demandRepository.findById((long) 1)).thenReturn(Optional.of(demand));
+		demand.setCount("3");
+
+		when(demandRepository.save(demand)).thenReturn(demand);
+		assertThat(demandService.update(1, demand)).isEqualTo(demand);
+	}	
 	
 	
 	
