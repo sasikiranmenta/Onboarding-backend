@@ -63,7 +63,7 @@ public class OnboardingContTest {
 	}
 	
 	@Test
-	public void testGetTicketById() throws Exception {
+	public void testById() throws Exception {
 		
 		 Onboarding onboarding = new Onboarding(1,2,"sasi","sasikiran","ssn",4,45678,"nellore","nellore","mumbai","2020-06-06","2020-06-06","mjbb","kjbkj","klhkjh" );
 		
@@ -80,7 +80,7 @@ public class OnboardingContTest {
 	}
 
 	@Test
-	public void testGetAllBookedTickets() throws Exception {
+	public void testGetAll() throws Exception {
 		
 		 Onboarding onboarding = new Onboarding(1,2,"sasi","sasikiran","ssn",4,45678,"nellore","nellore","mumbai","2020-06-06","2020-06-06","mjbb","kjbkj","klhkjh" );
 			
